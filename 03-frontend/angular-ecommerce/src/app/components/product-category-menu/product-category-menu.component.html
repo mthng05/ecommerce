@@ -1,0 +1,18 @@
+<div class="bg-white p-2 rounded-lg h-full">
+  <button 
+    (click)="toggleMenu()" 
+    [ngStyle]="getButtonStyle()"
+    class="text-xl font-bold"
+  >Category</button>
+  <ul *ngIf="menuVisible" class="pl-0">
+    <li *ngFor="let tempProductCategory of productCategories">
+      <a 
+        class="block p-2 rounded-md text-slate-700 font-semibold hover:bg-zinc-200 hover:text-slate-900"
+        [routerLink]="['/category', tempProductCategory.id]"
+        routerLinkActive="active-link"
+      >
+        {{ tempProductCategory.categoryName }}
+      </a>
+    </li>
+  </ul>
+</div>

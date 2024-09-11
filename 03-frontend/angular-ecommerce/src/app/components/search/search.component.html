@@ -1,0 +1,17 @@
+<div class="flex w-full gap-2 items-center">
+  <input
+    #keyword
+    class="lg:w8/12 w-4/5 p-2 rounded-lg border border-gray-300 hover:border-gray-500 focus:outline-none focus:border-gray-500"
+    placeholder="Search for product"
+    (keyup.enter)="handleSearchByKeyword(keyword.value)"
+  />
+
+  <button
+    class="lg:w-2/12 w-1/5 py-2 px-4 rounded-lg bg-zinc-400 text-white hover:bg-zinc-600"
+    (click)="handleSearchByKeyword(keyword.value)"
+  >
+    Search
+  </button>
+
+  <app-cart-status></app-cart-status>
+</div>

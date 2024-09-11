@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.color-price {
+  color: #3b82f6;
+}
+
+.active-link {
+  color: #3b82f6;
+  text-decoration-line: underline;
+}

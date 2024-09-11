@@ -1,0 +1,43 @@
+<div class="h-full flex flex-col gap-2">
+  <nav aria-label="breadcrumb">
+    <ol class="flex text-sm text-gray-500 font-semibold">
+      <li class="breadcrumb-item">
+        <a href="/products" class="hover:underline hover:text-gray-800">Home</a>
+        <span class="mx-2">›</span>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/category/1" class="hover:underline hover:text-gray-800"
+          >Books</a
+        >
+        <span class="mx-2">›</span>
+      </li>
+      <li class="breadcrumb-item text-gray-700">
+        {{ product?.name }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="grid lg:grid-cols-2 grid-cols-1 pb-2 gap-2">
+    <img src="{{ product?.imageUrl }}" alt="product image" class="pb-4" />
+    <div class="bg-white h-fit">
+      <div class="flex flex-col gap-2 p-4">
+        <span class="font-extrabold text-xl">{{ product?.name }}</span>
+        <span class="font-semibold color-price">{{
+          product?.unitPrice | currency
+        }}</span>
+        <hr />
+        <span class="font-semibold">Description</span>
+        <span class="text-justify">{{ product?.description }}</span>
+        <br />
+        <div class="w-full mt-auto">
+          <button 
+            class="w-full p-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white font-semibold"
+            (click)="handleAddToCart(product)"
+          >
+            Buy Now!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

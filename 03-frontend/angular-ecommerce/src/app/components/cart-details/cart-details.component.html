@@ -1,0 +1,61 @@
+<div class="bg-white lg:w-1/2 w-3/4 mx-auto shadow-lg p-4 rounded-lg">
+  <div 
+    *ngFor="let tempCartItem of cartItems; let i = index"
+    class="flex flex-col gap-2 my-2"
+  >
+    <div class="flex gap-2">
+      <div class="w-1/4 flex flex-col items-center">
+        <img src="{{ tempCartItem.imageUrl }}" >
+        <button 
+          (click)="removeCartItem(tempCartItem)"
+          class="mt-2 p-2 rounded-full hover:bg-gray-100 focus:outline-none transition duration-200 ease-in-out">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" class="fill-current">
+            <path d="M 13 5 L 12.728516 5.8164062 C 12.492516 6.5224062 11.830937 7 11.085938 7 L 4 7 L 4 8.5 C 5.258 8.8 6.1901719 9.8604844 6.3261719 11.146484 L 7.9941406 27 L 24.005859 27 L 25.673828 11.146484 C 25.809828 9.8604844 26.742 8.8 28 8.5 L 28 7 L 20.914062 7 C 20.169062 7 19.507484 6.5224062 19.271484 5.8164062 L 19 5 L 13 5 z M 8.2167969 10 L 23.783203 10 L 22.099609 26 L 9.9003906 26 L 8.2167969 10 z"></path>
+          </svg>        
+        </button>          
+      </div>
+      <div class="flex justify-between w-full">
+        <span class="font-semibold text-wrap">{{ tempCartItem.name }}</span>
+        <div class="flex flex-end flex-col">
+          <span class="font-semibold color-price flex justify-end">{{ tempCartItem.unitPrice | currency }}</span>
+          <div class="py-2 inline-block bg-white rounded-lg" data-hs-input-number="">
+            <div class="flex items-center gap-x-1.5">
+              <button
+                (click)="decrementQuantity(tempCartItem)" 
+                type="button" class="size-6 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" tabindex="-1" aria-label="Decrease" data-hs-input-number-decrement="">
+                <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                </svg>
+              </button>
+              <input class="p-0 w-6 bg-transparent border-0 text-gray-800 text-center focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" [(ngModel)]="tempCartItem.quantity" data-hs-input-number-input="">
+              <button 
+                (click)="incrementQuanity(tempCartItem)"
+                type="button" class="size-6 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" tabindex="-1" aria-label="Increase" data-hs-input-number-increment="">
+                <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5v14"></path>
+                </svg>
+              </button>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+    <hr *ngIf="i < cartItems.length - 1" />
+  </div>
+  <div class="flex justify-between">
+    <span class="font-extrabold">
+      Subtotal ({{ totalQuantity }} product{{ totalQuantity === 1 ? '' : 's' }}):
+    </span>    
+    <span class="font-extrabold color-price">{{ totalPrice | currency }}</span>
+  </div>
+  <hr />
+  <div class="flex justify-end">
+    <button 
+      routerLink="/checkout"
+      routerLinkActive="active" 
+      class="font-semibold text-white bg-zinc-400 py-2 px-4 rounded-lg border border-gray-300 hover:bg-zinc-600 focus:border-gray-500 focus:outline-none transition ease-in-out duration-300">
+      Checkout Here!
+    </button>
+  </div>
+</div>

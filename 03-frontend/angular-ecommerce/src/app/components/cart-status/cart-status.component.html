@@ -1,0 +1,26 @@
+<div class="lg:w-2/12 flex items-center rounded-full p-2" routerLink="/cart">
+  <div class="bg-zinc-400 text-white px-3 py-2 rounded-l-full">
+    {{ totalPrice | currency : "USD" }}
+  </div>
+
+  <div class="bg-white text-gray-600 px-3 py-2 rounded-r-full">
+    {{ totalQuantity }}
+  </div>
+
+  <div class="ml-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-black"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.6 8M9 21h6m0 0h-6m6 0a2 2 0 11-4 0m4 0a2 2 0 11-4 0"
+      />
+    </svg>
+  </div>
+</div>
