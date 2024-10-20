@@ -1,17 +1,19 @@
 <div class="flex w-full gap-2 items-center">
   <input
     #keyword
-    class="lg:w8/12 w-4/5 p-2 rounded-lg border border-gray-300 hover:border-gray-500 focus:outline-none focus:border-gray-500"
+    class="w-3/4 lg:w-8/12 p-2 rounded-lg border border-gray-300 hover:border-gray-500 focus:outline-none focus:border-gray-500 transition-colors duration-300 ease-in-out"
     placeholder="Search for product"
     (keyup.enter)="handleSearchByKeyword(keyword.value)"
   />
 
   <button
-    class="lg:w-2/12 w-1/5 py-2 px-4 rounded-lg bg-zinc-400 text-white hover:bg-zinc-600"
+    class="w-1/4 lg:w-2/12 p-2 rounded-lg bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600 transition-colors duration-100 ease-in-out"
     (click)="handleSearchByKeyword(keyword.value)"
   >
     Search
   </button>
 
-  <app-cart-status></app-cart-status>
+  <app-login-status class="hidden lg:block"></app-login-status>
+
+  <app-cart-status class="hidden lg:block"></app-cart-status>
 </div>

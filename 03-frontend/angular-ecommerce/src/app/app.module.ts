@@ -15,8 +15,17 @@ import { NgModule } from '@angular/core';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
+import OktaAuth from '@okta/okta-auth-js';
+import myAppConfig from './config/my-app-config';
+import { OktaAuthModule, OKTA_AUTH, OktaCallbackComponent, OKTA_CONFIG } from '@okta/okta-angular';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
 registerLocaleData(en);
+
+const oktaConfig = myAppConfig.oidc;
+
+const oktaAuth = new OktaAuth(oktaConfig);
 
 @NgModule({
   declarations: [
@@ -28,6 +37,8 @@ registerLocaleData(en);
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
+    LoginComponent,
+    LoginStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,11 +46,13 @@ registerLocaleData(en);
     FormsModule,
     NgbModule,
     NgbPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OktaAuthModule
   ],
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(),
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
   ],
   bootstrap: [AppComponent]
 })

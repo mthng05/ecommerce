@@ -1,16 +1,16 @@
-<div class="lg:w-2/12 flex items-center rounded-full p-2" routerLink="/cart">
-  <div class="bg-zinc-400 text-white px-3 py-2 rounded-l-full">
+<div class="lg:w-2/12 md:w-3/12 sm:w-4/12 w-full flex items-center rounded-lg p-1" routerLink="/cart">
+  <div class="bg-zinc-400 text-white px-2 py-1 rounded-l-xl">
     {{ totalPrice | currency : "USD" }}
   </div>
 
-  <div class="bg-white text-gray-600 px-3 py-2 rounded-r-full">
+  <div class="bg-white text-gray-700 px-2 py-1 rounded-r-xl">
     {{ totalQuantity }}
   </div>
 
   <div class="ml-2">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6 text-black"
+      class="h-6 w-6 text-gray-700 hover:text-gray-950"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
